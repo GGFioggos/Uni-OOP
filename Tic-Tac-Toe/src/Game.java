@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 public class Game {
 	private Gameboard board = new Gameboard();
@@ -65,7 +65,7 @@ public class Game {
 
 	// RANDOM CPU MOVE
 	private int randomMove() {
-		return ThreadLocalRandom.current().nextInt(0, 3);
+		return (new Random().nextInt(3));
 	}
 
 	// CONVERT FIRST CHAR OF INPUT TO INT
