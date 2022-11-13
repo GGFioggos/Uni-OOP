@@ -15,7 +15,7 @@ public class Game {
 		int intRow = 0;
 		int intCol = 0;
 
-		while (i < 8) {
+		while (!board.hasEnded() && i < 9) {
 			board.printBoard();
 			// PLAYER MOVE
 			if (i % 2 == 0) {
@@ -41,6 +41,11 @@ public class Game {
 					}
 				} while (!isLegalInput(coords) || (board.isOccupied(intRow, intCol)));
 				player.makeMove(intRow, intCol, board);
+
+				if (board.hasEnded()) {
+					announceWinner(player);
+				}
+
 				// CPU MOVE
 			} else {
 				System.out.println(CPU.getName() + " Turn");
@@ -53,19 +58,26 @@ public class Game {
 
 				CPU.makeMove(intRow, intCol, board);
 
+				if (board.hasEnded()) {
+					announceWinner(CPU);
+				}
 			}
 			i++;
+			if (i == 9 && !board.hasEnded()) {
+				System.out.println("Game over! It's a draw.");
+				board.printBoard();
+			}
 		}
-	}
-
-	// CHECK IF GAME HAS ENDED
-	private boolean hasEnded() {
-		return false;
 	}
 
 	// RANDOM CPU MOVE
 	private int randomMove() {
 		return (new Random().nextInt(3));
+	}
+
+	private void announceWinner(Player winner) {
+		System.out.println("Game over! " + winner.getName() + " (" + winner.getSymbol() + ") Wins!");
+		board.printBoard();
 	}
 
 	// CONVERT FIRST CHAR OF INPUT TO INT
@@ -80,7 +92,7 @@ public class Game {
 
 	// CHECK IF INPUT IS IN THE CORRECT FORMAT (A1)
 	private boolean isLegalInput(String input) {
-		if (input.length() > 2) {
+		if (input.length() != 2) {
 			return false;
 		}
 
@@ -92,6 +104,5 @@ public class Game {
 			return false;
 		}
 		return true;
-
 	}
 }
