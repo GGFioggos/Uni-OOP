@@ -35,8 +35,8 @@ public class Suspect {
 	public ArrayList<Suspect> getCommonPartners(Suspect suspect) {
 		ArrayList<Suspect> common = new ArrayList<>();
 
-		for (Suspect sus : suspect.getPartners()) {
-			if (partners.contains(sus)) {
+		for (Suspect sus : partners) {
+			if (suspect.getPartners().contains(sus) && !common.contains(sus)) {
 				common.add(sus);
 			}
 		}
@@ -47,7 +47,7 @@ public class Suspect {
 		return name;
 	}
 	
-	public String getCodename() {
+	public String getCodeName() {
 		return encname;
 	}
 	
@@ -55,9 +55,13 @@ public class Suspect {
 		return country;
 	}
 	
+	public ArrayList<String> getPhoneNumbers() {
+		return phonenums;
+	}
+	
 	public void printPartners() {
 		for (Suspect suspect: partners) {
-			System.out.println("Name: " + suspect.getName() + "Code Name: " + suspect.getCodename() + (suspect.getCountry() == this.getCountry() ? '*' : ""));
+			System.out.println("Name: " + suspect.getName() + "Code Name: " + suspect.getCodeName() + (suspect.getCountry() == this.getCountry() ? '*' : ""));
 		}
 	}
 
