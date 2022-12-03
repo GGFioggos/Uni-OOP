@@ -5,7 +5,7 @@ public class Communication {
 	private int year;
 	private int month;
 	private int day;
-	
+
 	public Communication(String number1, String number2, int day, int month, int year) {
 		this.numbers.add(number1);
 		this.numbers.add(number2);
@@ -15,13 +15,13 @@ public class Communication {
 	}
 
 	public void printInfo() {
-		System.out.println("Between " + numbers.get(0) + " --- " + numbers.get(1) + " on " + getFullDate());
+		System.out.println("Between " + numbers.get(0) + " --- " + numbers.get(1) + "\non " + getFullDate());
 	}
-	
+
 	private String getFullDate() {
 		return (year + "/" + month + "/" + day);
 	}
-	
+
 	public ArrayList<String> getNumbers() {
 		return numbers;
 	}

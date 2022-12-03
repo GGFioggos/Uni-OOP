@@ -42,26 +42,27 @@ public class Suspect {
 		}
 		return common;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public String getCodeName() {
 		return encname;
 	}
-	
+
 	public String getCountry() {
 		return country;
 	}
-	
+
 	public ArrayList<String> getPhoneNumbers() {
 		return phonenums;
 	}
-	
+
 	public void printPartners() {
-		for (Suspect suspect: partners) {
-			System.out.println("Name: " + suspect.getName() + "Code Name: " + suspect.getCodeName() + (suspect.getCountry() == this.getCountry() ? '*' : ""));
+		for (Suspect suspect : partners) {
+			System.out.println("Name: " + suspect.getName() + "Code Name: " + suspect.getCodeName()
+					+ (suspect.getCountry() == this.getCountry() ? '*' : ""));
 		}
 	}
 

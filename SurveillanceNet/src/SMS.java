@@ -1,7 +1,7 @@
 
-public class SMS extends Communication{
+public class SMS extends Communication {
 	private String content;
-	
+
 	public SMS(String number1, String number2, int year, int month, int day, String content) {
 		super(number1, number2, year, month, day);
 		this.content = content;
@@ -12,7 +12,7 @@ public class SMS extends Communication{
 		super.printInfo();
 		System.out.println("Text: " + content);
 	}
-	
+
 	public String getContent() {
 		return content;
 	}

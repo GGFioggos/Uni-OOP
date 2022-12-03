@@ -4,14 +4,11 @@ public class Registry {
 	private ArrayList<Suspect> suspects = new ArrayList<>();
 	private ArrayList<Communication> communications = new ArrayList<>();
 
-	public Registry() {
-
-	}
-
 	public void addSuspect(Suspect suspect) {
 		suspects.add(suspect);
 	}
 
+	// Adds communication to ArrayList
 	public void addCommunication(Communication communication) {
 		communications.add(communication);
 
@@ -22,6 +19,7 @@ public class Registry {
 		sus2.addAssociate(sus1);
 	}
 
+	// Finds and returns a suspect based on their phone number
 	private Suspect findSuspectByNumber(String number) {
 		for (Suspect suspect : suspects) {
 			for (String phonenum : suspect.getPhoneNumbers()) {
@@ -76,13 +74,13 @@ public class Registry {
 		}
 		return messages;
 	}
-	
+
 	public void printSuspectsFromCountry(String country) {
 		System.out.println("Suspects coming from " + country + ":");
-		for (Suspect suspect: suspects) {
-			 if (suspect.getCountry() == country) {
-				 System.out.println(suspect.getName() + " (" + suspect.getCodeName() + ")");
-			 }
+		for (Suspect suspect : suspects) {
+			if (suspect.getCountry() == country) {
+				System.out.println(suspect.getName() + " (" + suspect.getCodeName() + ")");
+			}
 		}
 	}
 
