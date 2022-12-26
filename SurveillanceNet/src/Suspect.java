@@ -20,8 +20,9 @@ public class Suspect {
 	}
 
 	public void addAssociate(Suspect associate) {
-		// Check that associate is not already in the list
-		partners.add(associate);
+		if (!partners.contains(associate)) {
+			partners.add(associate);
+		}
 	}
 
 	public ArrayList<Suspect> getSuggestedPartners() {
