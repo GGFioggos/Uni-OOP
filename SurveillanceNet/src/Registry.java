@@ -8,6 +8,10 @@ public class Registry {
 		suspects.add(suspect);
 	}
 
+	public ArrayList<Suspect> getAllSuspects() {
+		return suspects;
+	}
+
 	// Adds communication to ArrayList
 	public void addCommunication(Communication communication) {
 		communications.add(communication);
@@ -26,6 +30,15 @@ public class Registry {
 				if (phonenum == number) {
 					return suspect;
 				}
+			}
+		}
+		return null;
+	}
+
+	public Suspect findSuspectByName(String name) {
+		for (Suspect suspect : suspects) {
+			if (name.equals(suspect.getName())) {
+				return suspect;
 			}
 		}
 		return null;
@@ -75,13 +88,14 @@ public class Registry {
 		return messages;
 	}
 
-	public void printSuspectsFromCountry(String country) {
-		System.out.println("Suspects coming from " + country + ":");
+	public ArrayList<Suspect> printSuspectsFromCountry(String country) {
+		ArrayList<Suspect> countrySuspects = new ArrayList<>();
 		for (Suspect suspect : suspects) {
 			if (suspect.getCountry() == country) {
-				System.out.println(suspect.getName() + " (" + suspect.getCodeName() + ")");
+				countrySuspects.add(suspect);
 			}
 		}
+		return countrySuspects;
 	}
 
 }
