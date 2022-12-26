@@ -24,6 +24,20 @@ public class Suspect {
 		partners.add(associate);
 	}
 
+	public ArrayList<Suspect> getSuggestedPartners() {
+		ArrayList<Suspect> suggestedPartners = new ArrayList<>();
+		for (Suspect suspect : partners) {
+			for (Suspect suspectsPartner : suspect.getPartners()) {
+				if (!suggestedPartners.contains(suspectsPartner)
+						&& (!partners.contains(suspectsPartner) && (suspectsPartner != this))) {
+					suggestedPartners.add(suspectsPartner);
+				}
+			}
+		}
+
+		return suggestedPartners;
+	}
+
 	public boolean isConnectedTo(Suspect suspect) {
 		return partners.contains(suspect);
 	}
