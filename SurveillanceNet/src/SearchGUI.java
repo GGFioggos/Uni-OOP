@@ -25,8 +25,10 @@ public class SearchGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Suspect searchedSuspect = registry.findSuspectByName(nameInputField.getText());
 				if (searchedSuspect != null) {
+					// If suspect exists open info window
 					new InfoGUI(searchedSuspect, registry);
 				} else {
+					// if suspect does not exist open error window
 					new ErrorGUI(nameInputField.getText());
 				}
 			}

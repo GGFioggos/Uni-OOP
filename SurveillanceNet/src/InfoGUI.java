@@ -27,7 +27,7 @@ public class InfoGUI extends JFrame {
 	private JTextField phoneNumberInput;
 	private JTextArea messages;
 	private JButton messageButton = new JButton("Find SMS");
-	
+
 	// Return Button
 	private JButton returnButton = new JButton("Return to Search Screen");
 
@@ -38,30 +38,30 @@ public class InfoGUI extends JFrame {
 	private JPanel partnersPanel = new JPanel();
 	private JPanel suggestedPartnersPanel = new JPanel();
 	private JPanel countrySuspectsPanel = new JPanel();
-	
-	public InfoGUI(Suspect suspect, Registry registry) {
 
+	public InfoGUI(Suspect suspect, Registry registry) {
+		// Get each panel from method
 		suspectInfo = createSuspectInfo(suspect);
 		SMSpanel = createSMSPanel(suspect, registry);
 		partnersPanel = createPartnersPanel(suspect);
 		suggestedPartnersPanel = createSuggestedPartnersPanel(suspect);
 		countrySuspectsPanel = createCountrySuspectsPanel(suspect, registry);
-		
+
+		// Add every panel to main Wrapper panel
 		mainPanel.add(suspectInfo);
 		mainPanel.add(SMSpanel);
 		mainPanel.add(partnersPanel);
 		mainPanel.add(suggestedPartnersPanel);
 		mainPanel.add(countrySuspectsPanel);
 		mainPanel.add(returnButton);
-		
+
 		returnButton.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		
+
 		this.setContentPane(mainPanel);
 
 		this.setTitle("Suspect Page");
@@ -128,7 +128,6 @@ public class InfoGUI extends JFrame {
 		partnersArea.setEditable(false);
 		JLabel title = new JLabel("Partners");
 
-		System.out.println(suspect.getPartners());
 		for (Suspect partner : suspect.getPartners()) {
 			partnersArea.append(partner.getName() + ", " + partner.getCodeName() + "\n");
 		}
@@ -140,35 +139,35 @@ public class InfoGUI extends JFrame {
 		return partnersPanel;
 
 	}
-	
+
 	private JPanel createSuggestedPartnersPanel(Suspect suspect) {
 		suggestedPartnersPanel = new JPanel();
 		JLabel title = new JLabel("Suggested Partners ----->");
-		JTextArea suggestedPartners = new JTextArea(5,12);
+		JTextArea suggestedPartners = new JTextArea(5, 12);
 		suggestedPartners.setEditable(false);
 		suggestedPartners.setBorder(BorderFactory.createLineBorder(Color.black));
-		
-		for(Suspect suggested:suspect.getSuggestedPartners()) {
+
+		for (Suspect suggested : suspect.getSuggestedPartners()) {
 			suggestedPartners.append(suggested.getName() + "\n");
 		}
-		
+
 		suggestedPartnersPanel.add(title);
 		suggestedPartnersPanel.add(suggestedPartners);
 		suggestedPartnersPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		return suggestedPartnersPanel;
-		
+
 	}
-	
+
 	private JPanel createCountrySuspectsPanel(Suspect suspect, Registry registry) {
 		countrySuspectsPanel = new JPanel();
-		JTextArea countrySuspects = new JTextArea(10,17);
+		JTextArea countrySuspects = new JTextArea(10, 17);
 		countrySuspects.setBorder(BorderFactory.createLineBorder(Color.black));
 		countrySuspects.setEditable(false);
 		countrySuspects.append("Suspects coming from " + suspect.getCountry() + "\n");
-		for(Suspect sus: registry.printSuspectsFromCountry(suspect.getCountry())) {
+		for (Suspect sus : registry.printSuspectsFromCountry(suspect.getCountry())) {
 			countrySuspects.append(sus.getName() + "\n");
 		}
-		
+
 		countrySuspectsPanel.add(countrySuspects);
 		countrySuspectsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		return countrySuspectsPanel;
