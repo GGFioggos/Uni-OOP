@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,15 +11,11 @@ public class SearchGUI extends JFrame {
 
 	private JTextField nameInputField = new JTextField("Please enter suspect's name");
 	private JButton searchButton = new JButton("Find");
+	private JButton visualizeButton = new JButton("Visualize Network");
 
 	private JPanel panel = new JPanel();
 
 	public SearchGUI(Registry registry) {
-		panel.add(nameInputField);
-		panel.add(searchButton);
-
-		this.setContentPane(panel);
-
 		searchButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -33,7 +30,22 @@ public class SearchGUI extends JFrame {
 				}
 			}
 		});
-
+		
+		visualizeButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Visualization(registry);
+			}
+		});
+		
+		panel.add(nameInputField);
+		panel.add(searchButton);
+		panel.add(visualizeButton);
+		
+		this.setContentPane(panel);
+		
+		
 		this.setSize(400, 250);
 		this.setTitle("Find Suspect");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

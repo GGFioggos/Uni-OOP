@@ -47,7 +47,7 @@ public class Visualization extends JFrame {
 		this.setVisible(true);
 		this.setTitle("Network");
 		this.setSize(400, 400);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 
 }

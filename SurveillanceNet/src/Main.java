@@ -57,7 +57,6 @@ public class Main {
 			registry.addCommunication(comms[i]);
 
 		new SearchGUI(registry);
-
 	}
 
 }
