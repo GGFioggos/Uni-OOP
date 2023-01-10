@@ -1,7 +1,9 @@
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 import edu.uci.ics.jung.algorithms.layout.CircleLayout;
 import edu.uci.ics.jung.algorithms.shortestpath.DistanceStatistics;
@@ -15,7 +17,7 @@ public class Visualization extends JFrame {
 	private Registry registry;
 	private VisualizationImageServer visualization;
 	
-	private JLabel networkDiameter;
+	private JTextField networkDiameter;
 
 	public Visualization(Registry registry) {
 
@@ -39,10 +41,10 @@ public class Visualization extends JFrame {
 		visualization.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
 		
 		Double diameter = DistanceStatistics.diameter(graph);
-		networkDiameter = new JLabel("Diameter: " + diameter);
+		networkDiameter = new JTextField("Diameter: " + diameter);
 		
-		this.setContentPane(visualization);
-		this.add(networkDiameter);
+		this.getContentPane().add(visualization);
+		this.add(networkDiameter,BorderLayout.PAGE_END);
 		
 		this.setVisible(true);
 		this.setTitle("Network");
