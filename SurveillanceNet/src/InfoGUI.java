@@ -65,7 +65,7 @@ public class InfoGUI extends JFrame {
 		this.setContentPane(mainPanel);
 
 		this.setTitle("Suspect Page");
-		this.setSize(400, 900);
+		this.setSize(450, 900);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}

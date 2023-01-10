@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 
 public class SearchGUI extends JFrame {
 
-	private JTextField nameInputField = new JTextField("John Dow");
+	private JTextField nameInputField = new JTextField("Please enter suspect's name");
 	private JButton searchButton = new JButton("Find");
 
 	private JPanel panel = new JPanel();
