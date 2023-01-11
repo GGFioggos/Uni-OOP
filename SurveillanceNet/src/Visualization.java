@@ -47,7 +47,7 @@ public class Visualization extends JFrame {
 		this.add(networkDiameter,BorderLayout.PAGE_END);
 		
 		this.setVisible(true);
-		this.setTitle("Network");
+		this.setTitle("Suspects Network");
 		this.setSize(400, 400);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
